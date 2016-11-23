@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute', 'ngYoutubeEmbed']);
 
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider
@@ -7,10 +7,10 @@ app.config(['$routeProvider', function($routeProvider) {
       controller: 'HomeController',
       controllerAs: 'home'
     })
-    .when('/potato' ,{
-      templateUrl: '/views/templates/potato.html',
-      controller: 'PotatoController',
-      controllerAs: 'potato'
+    .when('/robot' ,{
+      templateUrl: '/views/templates/robot.html',
+      controller: 'RobotController',
+      controllerAs: 'robot'
     })
     .otherwise({
       redirectTo: 'home'
@@ -25,9 +25,8 @@ app.controller('HomeController', function() {
 
 });
 
-app.controller('PotatoController', function() {
-  console.log('potato controller running');
-  var self = this;
-  self.message = "Potato controller is the best!";
+app.controller('RobotController', ['$scope', function($scope) {
+  console.log('self aware robot is running');
+  $scope.link = 'https://youtu.be/ByGycK_Igqk';
 
-});
+}]);
